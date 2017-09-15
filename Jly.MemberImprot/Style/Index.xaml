@@ -6,5 +6,6 @@
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/Jly.MemberImprot;Component/Style/Common.xaml"/>
+        <ResourceDictionary Source="/Jly.MemberImprot;Component/Style/PasswordStyle.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

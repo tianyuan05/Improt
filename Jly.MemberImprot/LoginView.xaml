@@ -9,10 +9,13 @@
         xmlns:cc="clr-namespace:CustomControls;assembly=CustomControls"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+        xmlns:zz="clr-namespace:Jly.MemberImprot.Behavior"
         mc:Ignorable="d" 
         WindowState="Maximized" 
         WindowChrome.WindowChrome="{StaticResource MaximizedWindowChrome}"
+        prism:ViewModelLocator.AutoWireViewModel="True"
         Title="LoginView" Height="300" Width="300">
+    
     <Grid >
         <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 20 20 0">
             <cc:TextButton Content="&#xe779;" ToolTip="推出" Style="{StaticResource IconTextButtonStyle}"/>
@@ -24,7 +27,22 @@
             </StackPanel>
             <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0 20">
                 <TextBlock Text="&#xe606;" Style="{StaticResource IconTextBlockStyle}"/>
-                <xckt:WatermarkTextBox Width="200" Watermark="输入用命" VerticalContentAlignment="Center" Background="Transparent" Style="{StaticResource DefaultWatermarkTextBoxStyle}"/>
+                <PasswordBox x:Name="PasswordBox" Tag="请输入密码" Width="200" FontSize="15">
+                    <PasswordBox.Style>
+                        <Style TargetType="PasswordBox" BasedOn="{StaticResource WatermarkPasswordBoxStyle}">
+                            <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+                            <Setter Property="VerticalContentAlignment" Value="Center" />
+                            <Setter Property="zz:SelectAllWhenGotFocusBehavior.IsSelectAllWhenGotFocus" Value="True" />
+                            <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True" />
+                            <Setter Property="Background" Value="Transparent" />
+                            <Setter Property="Foreground" Value="{StaticResource DefaultInputForegroundBrush}" />
+                            <Setter Property="BorderThickness" Value="0" />
+                        </Style>
+                    </PasswordBox.Style>
+                    <i:Interaction.Behaviors>
+                        <zz:PasswordBoxBindingBehavior Password="{Binding Password}" />
+                    </i:Interaction.Behaviors>
+                </PasswordBox>
             </StackPanel>
             <StackPanel DockPanel.Dock="Top" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <cc:BrushButton Content="登录" Height="27" Width="100" Style="{StaticResource DefaultBrushButtonStyle}"/>
