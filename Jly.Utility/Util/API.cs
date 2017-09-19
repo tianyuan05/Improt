@@ -22,7 +22,5 @@ namespace Jly.Utility.Util
         /// </summary>
         public const string Account_Login = "/api/OparkAdmin/login";
 
-
-
     }
 }

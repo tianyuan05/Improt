@@ -13,5 +13,14 @@ namespace Jly.MemberImprot
     /// </summary>
     public partial class App : Application
     {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            LoginView login = new LoginView();
+
+            login.ShowDialog();
+
+            base.OnStartup(e);  
+
+        }
     }
 }

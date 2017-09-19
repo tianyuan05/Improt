@@ -23,7 +23,10 @@
         <DockPanel VerticalAlignment="Center" HorizontalAlignment="Center">
             <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
                 <TextBlock Text="&#xe602;" Style="{StaticResource IconTextBlockStyle}"/>
-                <ComboBox Width="200" Text="{Binding Account, UpdateSourceTrigger=PropertyChanged}" Tag="请输入手机号码" ItemsSource="{Binding Users}" FontSize="15" Foreground="{StaticResource DefaultInputForegroundBrush}" Padding="9 0 0 0">
+                <ComboBox Width="200"
+                          Text="{Binding Account, UpdateSourceTrigger=PropertyChanged}" 
+                          Tag="请输入手机号码" ItemsSource="{Binding Users}" 
+                          FontSize="15" Foreground="{StaticResource DefaultInputForegroundBrush}" Padding="9 0 0 0">
                     <ComboBox.Style>
                         <Style TargetType="ComboBox" BasedOn="{StaticResource WatermarkComboBoxStyle}">
                             <Setter Property="FocusVisualStyle" Value="{x:Null}" />

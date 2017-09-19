@@ -2,6 +2,12 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Jly.MemberImprot.Style">
 
+    <!--默认边框颜色-->
+    <SolidColorBrush Color="#D8DDE6" x:Key="DefaultBorderBrush1" />
+
+    <!--默认水印颜色-->
+    <SolidColorBrush Color="#16325C" x:Key="DefaultWatermarkerForegroundBrush1" />
+
     <Style x:Key="FocusVisual">
         <Setter Property="Control.Template">
             <Setter.Value>
@@ -207,7 +213,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TextBox}">
                     <Grid>
-                        <TextBlock x:Name="watermark" Text="{TemplateBinding Tag}" Margin="{TemplateBinding Padding}" VerticalAlignment="Center" Foreground="{StaticResource DefaultWatermarkerForegroundBrush}" Visibility="Collapsed" />
+                        <TextBlock x:Name="watermark" Text="{TemplateBinding Tag}" Margin="{TemplateBinding Padding}" VerticalAlignment="Center" Foreground="{StaticResource DefaultWatermarkerForegroundBrush1}" Visibility="Collapsed" />
                         <ScrollViewer x:Name="PART_ContentHost" Background="Transparent" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
                     </Grid>
                     <ControlTemplate.Triggers>
@@ -232,7 +238,7 @@
             <Popup x:Name="PART_Popup" AllowsTransparency="true" Grid.ColumnSpan="2" IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}" PopupAnimation="{StaticResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" Placement="Bottom">
                 <Border x:Name="shadow" MaxHeight="{TemplateBinding MaxDropDownHeight}" MinWidth="{Binding ActualWidth, ElementName=templateRoot}">
                     <!--popup背景色-->
-                    <Border x:Name="dropDownBorder" BorderBrush="{StaticResource DefaultBorderBrush}" BorderThickness="1" Background="#EEEEEE">
+                    <Border x:Name="dropDownBorder" BorderBrush="{StaticResource DefaultBorderBrush1}" BorderThickness="1" Background="#EEEEEE">
                         <ScrollViewer x:Name="DropDownScrollViewer" Margin="3">
                             <Grid x:Name="grid" RenderOptions.ClearTypeHint="Enabled">
                                 <Canvas x:Name="canvas" HorizontalAlignment="Left" Height="0" VerticalAlignment="Top" Width="0">
