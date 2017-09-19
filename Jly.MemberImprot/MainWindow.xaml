@@ -8,6 +8,8 @@
         Title="FC家乐营会员导入系统"
         Height="350" Width="525">
     <Grid>
-        
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button Content="测试" Click="Button_Click"/>
+        </StackPanel>
     </Grid>
 </Window>

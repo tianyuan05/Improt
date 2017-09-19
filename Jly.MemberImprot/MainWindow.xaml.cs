@@ -24,5 +24,12 @@ namespace Jly.MemberImprot
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            LoginView login = new LoginView();
+
+            login.ShowDialog();
+        }
     }
 }

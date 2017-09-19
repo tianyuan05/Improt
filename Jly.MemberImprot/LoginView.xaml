@@ -23,11 +23,20 @@
         <DockPanel VerticalAlignment="Center" HorizontalAlignment="Center">
             <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
                 <TextBlock Text="&#xe602;" Style="{StaticResource IconTextBlockStyle}"/>
-                <xckt:WatermarkTextBox Width="200" Watermark="输入用户名" VerticalContentAlignment="Center" Background="Transparent" Style="{StaticResource DefaultWatermarkTextBoxStyle}"/>
+                <ComboBox Width="200" Text="{Binding Account, UpdateSourceTrigger=PropertyChanged}" Tag="请输入手机号码" ItemsSource="{Binding Users}" FontSize="15" Foreground="{StaticResource DefaultInputForegroundBrush}" Padding="9 0 0 0">
+                    <ComboBox.Style>
+                        <Style TargetType="ComboBox" BasedOn="{StaticResource WatermarkComboBoxStyle}">
+                            <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+                            <Setter Property="IsEditable" Value="True" />
+                            <Setter Property="VerticalContentAlignment" Value="Center" />
+                            <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True" />
+                        </Style>
+                    </ComboBox.Style>
+                </ComboBox>
             </StackPanel>
             <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0 20">
                 <TextBlock Text="&#xe606;" Style="{StaticResource IconTextBlockStyle}"/>
-                <PasswordBox x:Name="PasswordBox" Tag="请输入密码" Width="200" FontSize="15">
+                <PasswordBox x:Name="PasswordBox" Tag="请输入密码" Width="200" FontSize="15" BorderBrush="Gray" BorderThickness="1">
                     <PasswordBox.Style>
                         <Style TargetType="PasswordBox" BasedOn="{StaticResource WatermarkPasswordBoxStyle}">
                             <Setter Property="FocusVisualStyle" Value="{x:Null}" />
