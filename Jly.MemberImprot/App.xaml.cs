@@ -19,7 +19,13 @@ namespace Jly.MemberImprot
 
             login.ShowDialog();
 
-            base.OnStartup(e);  
+            base.OnStartup(e);
+
+            if (login.ShowDialog().GetValueOrDefault())
+            {
+                MainWindow window = Application.Current.MainWindow as MainWindow;
+                window.Show();
+            }
 
         }
     }
