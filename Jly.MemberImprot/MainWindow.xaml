@@ -15,7 +15,7 @@
                 
             </StackPanel>
             <Grid>
-                <ContentControl/>
+                <ContentControl prism:RegionManager.RegionName="{x:Static region:RegionNames.MainRegionContent}"/>
             </Grid>
         </DockPanel>
     </Grid>
