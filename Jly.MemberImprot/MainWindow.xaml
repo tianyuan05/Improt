@@ -4,12 +4,19 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Jly.MemberImprot"
+        xmlns:region="clr-namespace:Jly.Utility.Util;assembly=Jly.Utility"
+        xmlns:prism="http://prismlibrary.com/"
         mc:Ignorable="d"
         Title="FC家乐营会员导入系统-V1.0"
         Height="350" Width="525">
     <Grid>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button Content="测试" Click="Button_Click"/>
-        </StackPanel>
+        <DockPanel>
+            <StackPanel DockPanel.Dock="Left" Background="GreenYellow" Width="200">
+                
+            </StackPanel>
+            <Grid>
+                <ContentControl/>
+            </Grid>
+        </DockPanel>
     </Grid>
 </Window>

@@ -25,7 +25,8 @@ namespace Jly.Utility.Http
                                 .AppendPathSegment(API.Account_Login)
                                 .SetQueryParams(new
                                 {
-
+                                    phone = name,
+                                    passwd = pwd,
                                 })
                                 .GetAsync()
                                 .ReceiveJson<JsonResult<User>>();

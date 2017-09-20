@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Jly.Utility.Core;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -15,18 +16,9 @@ namespace Jly.MemberImprot
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            LoginView login = new LoginView();
-
-            login.ShowDialog();
-
             base.OnStartup(e);
-
-            if (login.ShowDialog().GetValueOrDefault())
-            {
-                MainWindow window = Application.Current.MainWindow as MainWindow;
-                window.Show();
-            }
-
+            BootStrapper bs = new BootStrapper();
+            bs.Run();
         }
     }
 }

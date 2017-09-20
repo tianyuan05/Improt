@@ -1,4 +1,10 @@
-﻿using Prism.Commands;
+﻿using Jly.MemberImprot.Event;
+using Jly.Utility.Http;
+using Jly.Utility.Models;
+using Microsoft.Practices.Unity;
+using Newtonsoft.Json;
+using Prism.Commands;
+using Prism.Events;
 using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
@@ -7,6 +13,7 @@ using System.Runtime.InteropServices;
 using System.Security;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Jly.MemberImprot
 {
@@ -24,6 +31,9 @@ namespace Jly.MemberImprot
         #endregion
 
         #region 属性
+
+        [Dependency]
+        public IEventAggregator EventAggregator { get; set; }
 
         public IEnumerable<string> Users
         {
@@ -51,7 +61,7 @@ namespace Jly.MemberImprot
 
         public DelegateCommand LoginCommand { get; private set; }
 
-        void OnLogin()
+        async void OnLogin()
         {
             IntPtr passwordBSTR = default(IntPtr);
             string insecurePassword = "";
@@ -69,12 +79,18 @@ namespace Jly.MemberImprot
 
             try
             {
-                
-            }
-            catch 
-            {
+                User user = await LoginHttp.LoginAsync(Account, insecurePassword);
 
-                throw;
+                LoginView login = Application.Current.MainWindow as LoginView;
+
+                EventAggregator.GetEvent<UserEvent>().Publish(user);
+                login.DialogResult = true;
+                login.Close();
+
+            }
+            catch (Exception exc)
+            {
+                Console.WriteLine(JsonConvert.SerializeObject(exc));
             }
 
         }

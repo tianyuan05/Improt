@@ -57,7 +57,9 @@
                 </PasswordBox>
             </StackPanel>
             <StackPanel DockPanel.Dock="Top" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <cc:BrushButton Content="登录" Height="27" Width="100" Style="{StaticResource DefaultBrushButtonStyle}"/>
+                <cc:BrushButton Content="登录" Height="27" Width="100" 
+                                Command="{Binding LoginCommand}"
+                                Style="{StaticResource DefaultBrushButtonStyle}"/>
             </StackPanel>
         </DockPanel>
     </Grid>
