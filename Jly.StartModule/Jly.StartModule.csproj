@@ -129,5 +129,11 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Jly.Utility\Jly.Utility.csproj">
+      <Project>{540BD649-1539-43DB-9E3E-CAC0B5DDB085}</Project>
+      <Name>Jly.Utility</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

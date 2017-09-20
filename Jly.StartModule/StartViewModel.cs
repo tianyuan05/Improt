@@ -9,6 +9,9 @@ namespace Jly.Start
 {
     public class StartViewModel : BindableBase
     {
-
+        public StartViewModel()
+        {
+            Console.WriteLine("Enter StartModule");
+        }
     }
 }

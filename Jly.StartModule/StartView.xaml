@@ -12,7 +12,7 @@
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance Type={x:Type local:StartViewModel},IsDesignTimeCreatable=False}"
              prsim:ViewModelLocator.AutoWireViewModel="True">
-    <Grid>
-
+    <Grid Background="Red">
+        <Label>StartView</Label>
     </Grid>
 </UserControl>

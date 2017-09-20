@@ -8,13 +8,13 @@
         xmlns:prism="http://prismlibrary.com/"
         mc:Ignorable="d"
         Title="FC家乐营会员导入系统-V1.0"
-        Height="350" Width="525">
+        WindowState="Maximized">
     <Grid>
-        <DockPanel>
+        <DockPanel Margin="10 0 10 10">
             <StackPanel DockPanel.Dock="Left" Background="GreenYellow" Width="200">
                 
             </StackPanel>
-            <Grid>
+            <Grid DockPanel.Dock="Left">
                 <ContentControl prism:RegionManager.RegionName="{x:Static region:RegionNames.MainRegionContent}"/>
             </Grid>
         </DockPanel>

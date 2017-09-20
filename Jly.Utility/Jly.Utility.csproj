@@ -67,6 +67,7 @@
   <ItemGroup>
     <Compile Include="Core\FlurlHttpConfigure.cs" />
     <Compile Include="Core\ImportHelper.cs" />
+    <Compile Include="Core\Setting.cs" />
     <Compile Include="Extension\DateTimeExtension.cs" />
     <Compile Include="Extension\StringExtension.cs" />
     <Compile Include="Http\LoginHttp.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="Models\Opark.cs" />
     <Compile Include="Models\OparkAuth.cs" />
     <Compile Include="Models\OparkRole.cs" />
+    <Compile Include="Models\Session.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

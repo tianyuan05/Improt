@@ -1,4 +1,5 @@
-﻿using Microsoft.Practices.Unity;
+﻿using Jly.Utility.Util;
+using Microsoft.Practices.Unity;
 using Prism.Modularity;
 using Prism.Regions;
 using System;
@@ -19,7 +20,7 @@ namespace Jly.Start
 
         public void Initialize()
         {
-
+            RegionManager.RegisterViewWithRegion(RegionNames.MainRegionContent, typeof(StartView));
         }
     }
 }

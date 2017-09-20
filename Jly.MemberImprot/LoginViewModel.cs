@@ -1,4 +1,5 @@
 ﻿using Jly.MemberImprot.Event;
+using Jly.Utility.Core;
 using Jly.Utility.Http;
 using Jly.Utility.Models;
 using Microsoft.Practices.Unity;
@@ -20,6 +21,9 @@ namespace Jly.MemberImprot
     public class LoginViewModel : BindableBase
     {
         #region 字段
+
+        Setting setting;
+
 
         SecureString password;
 
@@ -57,10 +61,45 @@ namespace Jly.MemberImprot
         public LoginViewModel()
         {
             LoginCommand = new DelegateCommand(OnLogin);
+            CancelCommand = new DelegateCommand(OnCancel);
+
+            ReadSetting();
         }
+
+
+        #region DelegateComamnd
 
         public DelegateCommand LoginCommand { get; private set; }
 
+        public DelegateCommand CancelCommand { get; private set; }
+
+        #endregion
+
+        #region private method
+
+        void ReadSetting()
+        {
+            setting = Setting.Load();
+
+            if (setting.Managers != null)
+                Users = setting.Managers;
+
+            if (setting.ManagerLastTime != null)
+                Account = setting.ManagerLastTime;
+        }
+
+        void SaveSetting()
+        {
+            setting.ManagerLastTime = Account;
+            setting.OparkId = Session.OparkId;
+            if (!setting.Managers.Contains(Account))
+                setting.Managers.Add(Account);
+            setting.Save();
+        }
+
+        /// <summary>
+        /// login
+        /// </summary>
         async void OnLogin()
         {
             IntPtr passwordBSTR = default(IntPtr);
@@ -79,7 +118,9 @@ namespace Jly.MemberImprot
 
             try
             {
-                User user = await LoginHttp.LoginAsync(Account, insecurePassword);
+                User user = await LoginHttp.LoginAsync(Account, /*insecurePassword*/"123456");
+
+                SaveSetting(); //保存配置信息
 
                 LoginView login = Application.Current.MainWindow as LoginView;
 
@@ -95,5 +136,14 @@ namespace Jly.MemberImprot
 
         }
 
+        void OnCancel()
+        {
+            LoginView login = Application.Current.MainWindow as LoginView;
+            login.DialogResult = false;
+            login.Close();
+
+        }
+
+        #endregion
     }
 }

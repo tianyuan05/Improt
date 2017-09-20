@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Practices.Unity;
 using System.Windows;
+using Prism.Modularity;
+using Jly.Start;
 
 namespace Jly.MemberImprot
 {
@@ -31,7 +33,9 @@ namespace Jly.MemberImprot
 
         protected override void ConfigureModuleCatalog()
         {
-            base.ConfigureModuleCatalog();
+            //base.ConfigureModuleCatalog();
+            ModuleCatalog catalog = (ModuleCatalog)ModuleCatalog;
+            catalog.AddModule(typeof(StartModule));
         }
 
         protected override void ConfigureContainer()

@@ -11,56 +11,64 @@
         xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
         xmlns:zz="clr-namespace:Jly.MemberImprot.Behavior"
         mc:Ignorable="d" 
-        WindowState="Maximized" 
-        WindowChrome.WindowChrome="{StaticResource MaximizedWindowChrome}"
+        WindowStartupLocation="CenterScreen"
         prism:ViewModelLocator.AutoWireViewModel="True"
-        Title="LoginView" Height="300" Width="300">
-    
-    <Grid >
-        <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 20 20 0">
-            <cc:TextButton Content="&#xe779;" ToolTip="推出" Style="{StaticResource IconTextButtonStyle}"/>
+        Title="欢迎使用会员导入系统-V1.0" Height="400" Width="600">
+
+    <Grid Background="Transparent">
+        <StackPanel Visibility="Collapsed" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 20 20 0">
+            <cc:TextButton Content="&#xe779;" 
+                           Command="{Binding CancelCommand}"
+                           ToolTip="退出" 
+                           Style="{StaticResource IconTextButtonStyle}"/>
         </StackPanel>
-        <DockPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
-                <TextBlock Text="&#xe602;" Style="{StaticResource IconTextBlockStyle}"/>
-                <ComboBox Width="200"
+        <Border  Background="White" Padding="20">
+            <DockPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+                    <TextBlock Text="&#xe602;" Style="{StaticResource IconTextBlockStyle}"/>
+                    <Border BorderBrush="Gray" BorderThickness="1">
+                        <ComboBox Width="200"
                           Text="{Binding Account, UpdateSourceTrigger=PropertyChanged}" 
                           Tag="请输入手机号码" ItemsSource="{Binding Users}" 
                           FontSize="15" Foreground="{StaticResource DefaultInputForegroundBrush}" Padding="9 0 0 0">
-                    <ComboBox.Style>
-                        <Style TargetType="ComboBox" BasedOn="{StaticResource WatermarkComboBoxStyle}">
-                            <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-                            <Setter Property="IsEditable" Value="True" />
-                            <Setter Property="VerticalContentAlignment" Value="Center" />
-                            <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True" />
-                        </Style>
-                    </ComboBox.Style>
-                </ComboBox>
-            </StackPanel>
-            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0 20">
-                <TextBlock Text="&#xe606;" Style="{StaticResource IconTextBlockStyle}"/>
-                <PasswordBox x:Name="PasswordBox" Tag="请输入密码" Width="200" FontSize="15" BorderBrush="Gray" BorderThickness="1">
-                    <PasswordBox.Style>
-                        <Style TargetType="PasswordBox" BasedOn="{StaticResource WatermarkPasswordBoxStyle}">
-                            <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-                            <Setter Property="VerticalContentAlignment" Value="Center" />
-                            <Setter Property="zz:SelectAllWhenGotFocusBehavior.IsSelectAllWhenGotFocus" Value="True" />
-                            <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True" />
-                            <Setter Property="Background" Value="Transparent" />
-                            <Setter Property="Foreground" Value="{StaticResource DefaultInputForegroundBrush}" />
-                            <Setter Property="BorderThickness" Value="0" />
-                        </Style>
-                    </PasswordBox.Style>
-                    <i:Interaction.Behaviors>
-                        <zz:PasswordBoxBindingBehavior Password="{Binding Password}" />
-                    </i:Interaction.Behaviors>
-                </PasswordBox>
-            </StackPanel>
-            <StackPanel DockPanel.Dock="Top" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <cc:BrushButton Content="登录" Height="27" Width="100" 
+                            <ComboBox.Style>
+                                <Style TargetType="ComboBox" BasedOn="{StaticResource WatermarkComboBoxStyle}">
+                                    <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+                                    <Setter Property="IsEditable" Value="True" />
+                                    <Setter Property="VerticalContentAlignment" Value="Center" />
+                                    <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True" />
+                                </Style>
+                            </ComboBox.Style>
+                        </ComboBox>
+                    </Border>
+
+                </StackPanel>
+                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0 20">
+                    <TextBlock Text="&#xe606;" Style="{StaticResource IconTextBlockStyle}"/>
+                    <PasswordBox x:Name="PasswordBox" Tag="请输入密码" Width="200" FontSize="15" BorderBrush="Gray" BorderThickness="1">
+                        <PasswordBox.Style>
+                            <Style TargetType="PasswordBox" BasedOn="{StaticResource WatermarkPasswordBoxStyle}">
+                                <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+                                <Setter Property="VerticalContentAlignment" Value="Center" />
+                                <Setter Property="zz:SelectAllWhenGotFocusBehavior.IsSelectAllWhenGotFocus" Value="True" />
+                                <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True" />
+                                <Setter Property="Background" Value="Transparent" />
+                                <Setter Property="Foreground" Value="{StaticResource DefaultInputForegroundBrush}" />
+                                <Setter Property="BorderThickness" Value="0" />
+                            </Style>
+                        </PasswordBox.Style>
+                        <i:Interaction.Behaviors>
+                            <zz:PasswordBoxBindingBehavior Password="{Binding Password}" />
+                        </i:Interaction.Behaviors>
+                    </PasswordBox>
+                </StackPanel>
+                <StackPanel DockPanel.Dock="Top" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <cc:BrushButton Content="登录" Height="27" Width="100" 
                                 Command="{Binding LoginCommand}"
                                 Style="{StaticResource DefaultBrushButtonStyle}"/>
-            </StackPanel>
-        </DockPanel>
+                </StackPanel>
+            </DockPanel>
+        </Border>
+
     </Grid>
 </Window>
