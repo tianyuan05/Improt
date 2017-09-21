@@ -11,5 +11,15 @@ namespace Jly.Utility.Util
     /// </summary>
     public static class ViewNames
     {
+
+        /// <summary>
+        /// 首页视图
+        /// </summary>
+        public const string StartView = "StartView";
+
+        /// <summary>
+        /// 会员视图
+        /// </summary>
+        public const string MemberView = "MemberView";
     }
 }

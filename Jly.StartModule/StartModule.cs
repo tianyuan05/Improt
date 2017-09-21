@@ -21,6 +21,9 @@ namespace Jly.Start
         public void Initialize()
         {
             RegionManager.RegisterViewWithRegion(RegionNames.MainRegionContent, typeof(StartView));
+
+            Container.RegisterType<object, MemberView>(ViewNames.MemberView);
+            Container.RegisterType<object, StartView>(ViewNames.StartView);
         }
     }
 }

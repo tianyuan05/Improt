@@ -11,6 +11,14 @@ namespace Jly.Utility.Util
     /// </summary>
     public static class RegionNames
     {
+        /// <summary>
+        /// 主视图区
+        /// </summary>
         public const string MainRegionContent = "MainRegion";
+
+        /// <summary>
+        /// 主导航视图区
+        /// </summary>
+        public const string MainNavContent = "MainNavContent";
     }
 }

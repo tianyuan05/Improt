@@ -1,5 +1,5 @@
-﻿using Jly.MemberImprot.Event;
-using Jly.Utility.Core;
+﻿using Jly.Utility.Core;
+using Jly.Utility.Event;
 using Jly.Utility.Http;
 using Jly.Utility.Models;
 using Microsoft.Practices.Unity;

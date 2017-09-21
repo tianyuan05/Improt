@@ -1,0 +1,114 @@
+﻿<UserControl x:Class="Jly.Start.MemberView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:prism="http://prismlibrary.com/"
+             xmlns:cc="clr-namespace:CustomControls;assembly=CustomControls"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+             xmlns:custom="clr-namespace:Jly.CustomControl;assembly=Jly.CustomControl"
+             xmlns:local="clr-namespace:Jly.Start"
+             mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance Type={x:Type local:MemberViewModel},IsDesignTimeCreatable=False}"
+             prism:ViewModelLocator.AutoWireViewModel="True">
+    <Grid Margin="20 0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top">
+            <Label Content="会员导入" FontSize="{StaticResource FirstTileFontSize}"/>
+        </StackPanel>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0" Orientation="Horizontal">
+                    <xctk:WatermarkTextBox Width="120" Watermark="输入会员名" 
+                                           Background="Transparent"
+                                           Style="{StaticResource DefaultWatermarkTextBoxStyle}"/>
+                    <xctk:WatermarkTextBox Watermark="输入手机号"
+                                           Margin="20 0" Width="120"
+                                           Style="{StaticResource DefaultWatermarkTextBoxStyle}" Background="Transparent"/>
+                    <cc:BrushButton Content="查询" Style="{StaticResource DefaultBrushButtonStyle}" Width="60"/>
+                </StackPanel>
+                <Grid Margin="0 20 0 0" Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Border Grid.Row="0" BorderBrush="{StaticResource DefaultBorderBrush}" BorderThickness="0 1">
+                        <Grid Margin="5 0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Label>会员姓名</Label>
+                            </StackPanel>
+                            <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Label>会员手机号</Label>
+                            </StackPanel>
+                            <StackPanel Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Label>会员性别</Label>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                    <ItemsControl Grid.Row="1">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border Grid.Row="0" BorderBrush="{StaticResource DefaultBorderBrush}" BorderThickness="0 0 0 1">
+                                    <Grid Margin="5 0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <Label>会员姓名</Label>
+                                        </StackPanel>
+                                        <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <Label>会员手机号</Label>
+                                        </StackPanel>
+                                        <StackPanel Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <Label>会员性别</Label>
+                                        </StackPanel>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </Grid>
+                <Grid Grid.Row="2">
+                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <custom:PagerControl/>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+            <Grid Grid.Column="1">
+                <GroupBox Header="导入日志" BorderThickness="0">
+                    <Grid>
+                        <TextBox VerticalAlignment="Stretch" 
+                                 HorizontalAlignment="Stretch"
+                                 VerticalContentAlignment="Top" 
+                                 TextWrapping="Wrap"
+                                 ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                 HorizontalContentAlignment="Left" Background="Transparent"/>
+                    </Grid>
+                </GroupBox>
+            </Grid>
+
+        </Grid>
+    </Grid>
+</UserControl>

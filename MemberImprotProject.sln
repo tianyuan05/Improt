@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jly.Utility", "Jly.Utility\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jly.StartModule", "Jly.StartModule\Jly.StartModule.csproj", "{73B74A38-2F20-4683-9CC1-E8A82BC8CAAE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jly.CustomControl", "Jly.CustomControl\Jly.CustomControl.csproj", "{FED1C16C-566F-4149-B899-F6695F842D74}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{73B74A38-2F20-4683-9CC1-E8A82BC8CAAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{73B74A38-2F20-4683-9CC1-E8A82BC8CAAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{73B74A38-2F20-4683-9CC1-E8A82BC8CAAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FED1C16C-566F-4149-B899-F6695F842D74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FED1C16C-566F-4149-B899-F6695F842D74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FED1C16C-566F-4149-B899-F6695F842D74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FED1C16C-566F-4149-B899-F6695F842D74}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

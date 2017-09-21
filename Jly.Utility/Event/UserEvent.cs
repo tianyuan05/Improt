@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Jly.MemberImprot.Event
+namespace Jly.Utility.Event
 {
     /// <summary>
     /// 登陆事件

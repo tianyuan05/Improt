@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Jly.Utility.Util;
+using Microsoft.Practices.Unity;
+using Prism.Regions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,11 +28,18 @@ namespace Jly.MemberImprot
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            LoginView login = new LoginView();
+        [Dependency]
+        public IRegionManager RegionManager { get; set; }
 
-            login.ShowDialog();
+
+        private void Start_Click(object sender, RoutedEventArgs e)
+        {
+            RegionManager.RequestNavigate(RegionNames.MainRegionContent, ViewNames.StartView);
+        }
+
+        private void Member_Click(object sender, RoutedEventArgs e)
+        {
+            RegionManager.RequestNavigate(RegionNames.MainRegionContent, ViewNames.MemberView);
         }
     }
 }

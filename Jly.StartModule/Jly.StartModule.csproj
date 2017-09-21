@@ -95,6 +95,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MemberView.xaml.cs">
+      <DependentUpon>MemberView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MemberViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -124,12 +128,20 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="MemberView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="StartView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Jly.CustomControl\Jly.CustomControl.csproj">
+      <Project>{fed1c16c-566f-4149-b899-f6695f842d74}</Project>
+      <Name>Jly.CustomControl</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Jly.Utility\Jly.Utility.csproj">
       <Project>{540BD649-1539-43DB-9E3E-CAC0B5DDB085}</Project>
       <Name>Jly.Utility</Name>

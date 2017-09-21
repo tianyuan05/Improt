@@ -3,17 +3,47 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
         xmlns:local="clr-namespace:Jly.MemberImprot"
         xmlns:region="clr-namespace:Jly.Utility.Util;assembly=Jly.Utility"
         xmlns:prism="http://prismlibrary.com/"
         mc:Ignorable="d"
         Title="FC家乐营会员导入系统-V1.0"
-        WindowState="Maximized">
+        WindowState="Maximized"
+        d:DataContext="{d:DesignInstance Type={x:Type local:MainWindowViewModel},IsDesignTimeCreatable=False}"
+        prism:ViewModelLocator.AutoWireViewModel="True">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Load">
+            <ei:CallMethodAction TargetObject="{Binding}" MethodName="OnLoad"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <Grid>
         <DockPanel Margin="10 0 10 10">
-            <StackPanel DockPanel.Dock="Left" Background="GreenYellow" Width="200">
-                
+            <StackPanel Background="#2C2E3B" DockPanel.Dock="Left" Width="200">
+                <Border Padding="20">
+                    <StackPanel>
+                        <ComboBox Height="27" Width="160" HorizontalAlignment="Center" VerticalContentAlignment="Center"/>
+                        <Label Content="登录账号"
+                               Height="27" Margin="0 20" 
+                               HorizontalAlignment="Center" VerticalContentAlignment="Center"/>
+                    </StackPanel>
+                </Border>
+                <StackPanel Margin="0 20" VerticalAlignment="Top">
+                    <Button Content="首页" Background="Transparent" Foreground="White"
+                            BorderThickness="1" BorderBrush="White" Click="Start_Click" Width="180" Height="27" HorizontalAlignment="Center"/>
+                </StackPanel>
+                <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center">
+                    <Button Content="会员列表" 
+                            Background="Transparent"
+                            BorderBrush="White"
+                            BorderThickness="1"
+                            Foreground="White"
+                            Click="Member_Click"
+                            Width="180" Height="27"/>
+                </StackPanel>
             </StackPanel>
+            <GridSplitter BorderThickness="1" DockPanel.Dock="Left" BorderBrush="Gray"/>
             <Grid DockPanel.Dock="Left">
                 <ContentControl prism:RegionManager.RegionName="{x:Static region:RegionNames.MainRegionContent}"/>
             </Grid>
