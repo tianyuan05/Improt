@@ -78,12 +78,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Style\Converter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Converter\CouponTypeConverter.cs" />
+    <Compile Include="Converter\GenderConverter.cs" />
+    <Compile Include="Converter\MemberStateConverter.cs" />
     <Compile Include="PagerControl.xaml.cs">
       <DependentUpon>PagerControl.xaml</DependentUpon>
     </Compile>
@@ -109,6 +116,12 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Jly.Utility\Jly.Utility.csproj">
+      <Project>{540BD649-1539-43DB-9E3E-CAC0B5DDB085}</Project>
+      <Name>Jly.Utility</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

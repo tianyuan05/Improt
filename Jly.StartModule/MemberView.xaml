@@ -13,6 +13,11 @@
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance Type={x:Type local:MemberViewModel},IsDesignTimeCreatable=False}"
              prism:ViewModelLocator.AutoWireViewModel="True">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <ei:CallMethodAction TargetObject="{Binding}" MethodName="OnLoad"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <Grid Margin="20 0">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -35,18 +40,32 @@
                 <StackPanel Grid.Row="0" Orientation="Horizontal">
                     <xctk:WatermarkTextBox Width="120" Watermark="输入会员名" 
                                            Background="Transparent"
+                                           Text="{Binding Name,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                                            Style="{StaticResource DefaultWatermarkTextBoxStyle}"/>
                     <xctk:WatermarkTextBox Watermark="输入手机号"
+                                           Text="{Binding Phone,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                                            Margin="20 0" Width="120"
                                            Style="{StaticResource DefaultWatermarkTextBoxStyle}" Background="Transparent"/>
-                    <cc:BrushButton Content="查询" Style="{StaticResource DefaultBrushButtonStyle}" Width="60"/>
+                    <cc:BrushButton Content="查询" 
+                                    Command="{Binding QueryCommnad}"
+                                    Style="{StaticResource DefaultBrushButtonStyle}" Width="60"/>
                 </StackPanel>
                 <Grid Margin="0 20 0 0" Grid.Row="1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <Border Grid.Row="0" BorderBrush="{StaticResource DefaultBorderBrush}" BorderThickness="0 1">
+                    <Grid Grid.Row="0">
+                        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                            <CheckBox IsChecked="{Binding HasHeader}"
+                                      VerticalAlignment="Center"
+                                      Content="Excel有表头"/>
+                            <cc:BrushButton Content="导入会员" Margin="20 0" Command="{Binding ImportCommand}" 
+                                    Style="{StaticResource NormalBrushButtonStyle}" Width="80"/>
+                        </StackPanel>
+                    </Grid>
+                    <Border Grid.Row="1" BorderBrush="{StaticResource DefaultBorderBrush}" BorderThickness="0 1">
                         <Grid Margin="5 0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
@@ -64,7 +83,7 @@
                             </StackPanel>
                         </Grid>
                     </Border>
-                    <ItemsControl Grid.Row="1">
+                    <ItemsControl Grid.Row="2" ItemsSource="{Binding Members}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <Border Grid.Row="0" BorderBrush="{StaticResource DefaultBorderBrush}" BorderThickness="0 0 0 1">
@@ -75,13 +94,13 @@
                                             <ColumnDefinition/>
                                         </Grid.ColumnDefinitions>
                                         <StackPanel Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <Label>会员姓名</Label>
+                                            <Label Content="{Binding Name}"/>
                                         </StackPanel>
                                         <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <Label>会员手机号</Label>
+                                            <Label Content="{Binding Phone}"/>
                                         </StackPanel>
                                         <StackPanel Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <Label>会员性别</Label>
+                                            <Label Content="{Binding Gender,Converter={StaticResource GenderConverter}}"/>
                                         </StackPanel>
                                     </Grid>
                                 </Border>
@@ -91,14 +110,29 @@
                 </Grid>
                 <Grid Grid.Row="2">
                     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <custom:PagerControl/>
+                        <custom:PagerControl PageIndex="{Binding PageIndex,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                             PageSize="{Binding PageSize}" 
+                                             TotalCount="{Binding TotalCount}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="PageChanged">
+                                    <i:InvokeCommandAction Command="{Binding PageChangedCommand}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </custom:PagerControl>
                     </StackPanel>
                 </Grid>
             </Grid>
             <Grid Grid.Column="1">
-                <GroupBox Header="导入日志" BorderThickness="0">
+                <DockPanel>
+                    <Grid DockPanel.Dock="Top">
+                        <Label Content="异常日志" HorizontalAlignment="Left" VerticalContentAlignment="Center"/>
+                        <cc:TextButton Content="导出日志" 
+                                       Command="{Binding SaveLogCommand}"
+                                       Style="{StaticResource NormalTextButtonStyle}" HorizontalAlignment="Right"/>
+                    </Grid>
                     <Grid>
                         <TextBox VerticalAlignment="Stretch" 
+                                 Text="{Binding Log,Mode=OneWay}"
                                  HorizontalAlignment="Stretch"
                                  VerticalContentAlignment="Top" 
                                  TextWrapping="Wrap"
@@ -106,7 +140,7 @@
                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                                  HorizontalContentAlignment="Left" Background="Transparent"/>
                     </Grid>
-                </GroupBox>
+                </DockPanel>
             </Grid>
 
         </Grid>

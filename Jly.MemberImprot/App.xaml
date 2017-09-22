@@ -4,5 +4,9 @@
              xmlns:local="clr-namespace:Jly.MemberImprot">
     <Application.Resources>
         <ResourceDictionary Source="/Style/Index.xaml"/>
+
+        <!--Converter-->
+
     </Application.Resources>
+   
 </Application>

@@ -1,0 +1,12 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:convert="clr-namespace:Jly.CustomControl.Converter"
+                    xmlns:local="clr-namespace:Jly.CustomControl.Style">
+
+    <!--性别转换器-->
+    <convert:GenderConverter x:Key="GenderConverter"/>
+
+    <!--会员状态转换器-->
+    <convert:MemberStateConverter x:Key="MemberStateConverter"/>
+
+</ResourceDictionary>

@@ -8,6 +8,11 @@ namespace Jly.Utility.Extension
 {
     public static class StringExtension
     {
+        /// <summary>
+        /// 测试指定的字符串是 null、空还是仅由空白字符组成
+        /// </summary>
+        /// <param name="value">要测试的字符串</param>
+        /// <returns></returns>
         public static bool IsNullOrWhiteSpace(this string value)
         {
             return string.IsNullOrWhiteSpace(value);

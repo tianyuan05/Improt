@@ -8,5 +8,6 @@
         <ResourceDictionary Source="/Jly.MemberImprot;Component/Style/Common.xaml"/>
         <ResourceDictionary Source="/Jly.MemberImprot;Component/Style/PasswordStyle.xaml"/>
         <ResourceDictionary Source="/Jly.MemberImprot;Component/Style/WatermarkComboBoxStyle.xaml"/>
+        <ResourceDictionary Source="/Jly.CustomControl;Component/Style/Converter.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

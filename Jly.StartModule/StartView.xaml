@@ -20,19 +20,22 @@
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center">
             <xctk:WatermarkTextBox Watermark="输入手机号或卡号" 
+                                   Text="{Binding SearchKey,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                                    Style="{StaticResource DefaultWatermarkTextBoxStyle}" 
-                                   Width="200" Background="Transparent"/>
-            <cc:BrushButton Style="{StaticResource DefaultBrushButtonStyle}" Margin="20 0" Width="70" Content="查询"/>
+                                   Width="360" Background="Transparent"/>
+            <cc:BrushButton Command="{Binding QueryCommand}" 
+                            Style="{StaticResource DefaultBrushButtonStyle}"
+                            Margin="20 0" Width="70" Content="查询"/>
         </StackPanel>
-        <StackPanel Grid.Row="1" Margin="0 10" Orientation="Horizontal" HorizontalAlignment="Left">
+        <StackPanel  Height="70" Grid.Row="1" Margin="0 10" Orientation="Horizontal" HorizontalAlignment="Left">
             <StackPanel Width="200">
-                <Label Content="姓名"/>
-                <Label Content="性别"/>
-                <Label Content="手机号"/>
+                <Label Content="{Binding DetailMember.NickName}"/>
+                <Label Content="{Binding DetailMember.Gender,Converter={StaticResource GenderConverter}}"/>
+                <Label Content="{Binding DetailMember.Phone}"/>
             </StackPanel>
             <StackPanel Width="200">
-                <Label Content="会员卡号"/>
-                <Label Content="会员状态"/>
+                <Label Content="{Binding DetailMember.MemberCardNumber}"/>
+                <Label Content="{Binding DetailMember.State,Converter={StaticResource MemberStateConverter}}"/>
             </StackPanel>
         </StackPanel>
         <Grid Grid.Row="2" Margin="0 0 0 10">

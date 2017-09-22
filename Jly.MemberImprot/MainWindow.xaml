@@ -23,9 +23,20 @@
             <StackPanel Background="#2C2E3B" DockPanel.Dock="Left" Width="200">
                 <Border Padding="20">
                     <StackPanel>
-                        <ComboBox Height="27" Width="160" HorizontalAlignment="Center" VerticalContentAlignment="Center"/>
-                        <Label Content="登录账号"
-                               Height="27" Margin="0 20" 
+                        <ComboBox Height="27" Width="160" 
+                                  HorizontalAlignment="Center"
+                                  ItemsSource="{Binding CurrentUser.UserInfo.Oparks}"
+                                  SelectedIndex="{Binding SelectOparkIndex}"
+                                  DisplayMemberPath="Name"
+                                  VerticalContentAlignment="Center">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="SelectionChanged">
+                                    <ei:CallMethodAction TargetObject="{Binding}" MethodName="OparkSelectionChanged"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </ComboBox>
+                        <Label Content="{Binding CurrentUser.UserInfo.NickName}"
+                               Height="27" Margin="0 20" Foreground="White" FontWeight="Bold"
                                HorizontalAlignment="Center" VerticalContentAlignment="Center"/>
                     </StackPanel>
                 </Border>

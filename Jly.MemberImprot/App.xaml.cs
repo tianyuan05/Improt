@@ -16,9 +16,17 @@ namespace Jly.MemberImprot
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            base.OnStartup(e);
-            BootStrapper bs = new BootStrapper();
-            bs.Run();
+            try
+            {
+                base.OnStartup(e);
+                FlurlHttpConfigure.Configure();
+                BootStrapper bs = new BootStrapper();
+                bs.Run();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
         }
     }
 }

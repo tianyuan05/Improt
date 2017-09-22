@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Jly.Utility.Util;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -14,8 +15,7 @@ namespace Jly.Utility.Core
         public string ManagerLastTime = null;               // 上次登录的管理员
         public string OparkId = null;   // 登录的乐园ID
 
-        private static string StrSettingFileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-                "ImprotMember\\" + "Setting.xml");
+        private static string StrSettingFileName = Path.Combine(Functions.SpecialFolder,@"ImprotMember\Setting.xml");
 
         public virtual bool Save()
         {

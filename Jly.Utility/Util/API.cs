@@ -17,10 +17,36 @@ namespace Jly.Utility.Util
         /// </summary>
         public static string HttpServiceUrl { get; private set; } = ConfigurationManager.AppSettings["HttpServiceUrl"];
 
+        #region Login
+
         /// <summary>
         /// Login API path
         /// </summary>
         public const string Account_Login = "/api/OparkAdmin/login";
+
+        #endregion
+
+        #region Members
+
+        /// <summary>
+        /// query member simple info list
+        /// <para>0-current login opark id</para>
+        /// </summary>
+        public const string Member_QuerySimpleList = "/api/Member/{0}/QuerySmiple";
+
+        /// <summary>
+        /// query member detail info
+        /// <para>0-current login opark id</para>
+        /// </summary>
+        public const string Member_QueryDetail = "/api/Member/{0}/QueryDetail";
+
+        /// <summary>
+        /// query member list
+        /// <para>0-乐园Id</para>
+        /// </summary>
+        public const string Member_QueryList = "/api/Member/{0}/QueryList";
+
+        #endregion
 
     }
 }

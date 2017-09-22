@@ -83,5 +83,18 @@ namespace Jly.Utility.Models
         [JsonProperty("parks")]
         public List<Opark> Oparks { get { return oparks; } set { SetProperty(ref oparks, value); } }
 
+        [JsonIgnore]
+        public Opark CurrentOpark
+        {
+            get
+            {
+                if (Oparks?.Count > 0)
+                    return Oparks.FirstOrDefault();
+                else
+                    return null;
+            }
+        }
+
+
     }
 }

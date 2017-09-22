@@ -45,6 +45,10 @@
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="OpenXmlPowerTools, Version=4.5.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenXmlPowerTools.4.5.3.2\lib\net45\OpenXmlPowerTools.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationFramework" />
     <Reference Include="Prism, Version=6.3.0.0, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
       <HintPath>..\packages\Prism.Core.6.3.0\lib\net45\Prism.dll</HintPath>
     </Reference>
@@ -54,9 +58,16 @@
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Management.Automation.dll.10.0.10586.0\lib\net40\System.Management.Automation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Prism.Wpf.6.3.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
     </Reference>
+    <Reference Include="System.Windows.Presentation" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -67,22 +78,31 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\FlurlHttpConfigure.cs" />
-    <Compile Include="Core\ExcelReader.cs" />
+    <Compile Include="Core\ExcelHelper.cs" />
     <Compile Include="Core\Setting.cs" />
+    <Compile Include="Data\Dictionarys.cs" />
+    <Compile Include="Data\KeyValue.cs" />
+    <Compile Include="Event\OparkChangedEvent.cs" />
     <Compile Include="Event\UserEvent.cs" />
     <Compile Include="Extension\DateTimeExtension.cs" />
     <Compile Include="Extension\StringExtension.cs" />
     <Compile Include="Http\LoginHttp.cs" />
+    <Compile Include="Http\MemberHttp.cs" />
     <Compile Include="Models\JsonResult.cs" />
+    <Compile Include="Models\Member.cs" />
+    <Compile Include="Models\MemberDetailInfo.cs" />
+    <Compile Include="Models\MemberSimpleInfo.cs" />
     <Compile Include="Models\Opark.cs" />
     <Compile Include="Models\OparkAuth.cs" />
     <Compile Include="Models\OparkRole.cs" />
     <Compile Include="Models\OriginalMemberInfo.cs" />
+    <Compile Include="Models\Pager.cs" />
     <Compile Include="Models\Session.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\API.cs" />
+    <Compile Include="Util\Functions.cs" />
     <Compile Include="Util\RegionNames.cs" />
     <Compile Include="Util\ViewNames.cs" />
   </ItemGroup>
