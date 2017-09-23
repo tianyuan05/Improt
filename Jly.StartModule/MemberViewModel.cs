@@ -67,6 +67,7 @@ namespace Jly.Start
             QueryCommnad = new DelegateCommand(OnQuery);
             PageChangedCommand = new DelegateCommand(OnPageChanged);
             SaveLogCommand = new DelegateCommand(OnSaveLog);
+            ExportCommand = new DelegateCommand(OnExport);
         }
 
         #endregion
@@ -74,6 +75,11 @@ namespace Jly.Start
         #region DelegateCommand
 
         public DelegateCommand ImportCommand { get; private set; }
+
+        /// <summary>
+        /// 导出
+        /// </summary>
+        public DelegateCommand ExportCommand { get; private set; }
 
         public DelegateCommand QueryCommnad { get; private set; }
 
@@ -118,6 +124,27 @@ namespace Jly.Start
 
         }
 
+        void OnExport()
+        {
+            if (DisableInfo.Count <= 0)
+            {
+                MessageBox.Show("不存在异常数据");
+                return;
+            }
+
+            try
+            {
+                string path = Functions.SetFilePath($"{Session.Opark.Name}_{DateTime.Now.ToString("yyyyMMddHHmmss")}");
+                if (path.IsNullOrWhiteSpace()) return;
+
+                ExcelHelper.Writer<OriginalMemberInfo>(DisableInfo,DisableInfo.Count, path);
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
+
+        }
 
         async void OnPageChanged()
         {
@@ -153,6 +180,7 @@ namespace Jly.Start
             }
         }
 
+        List<OriginalMemberInfo> DisableInfo { get; set; } = new List<OriginalMemberInfo>();
 
         /// <summary>
         /// 检测读取数据是否合法
@@ -168,21 +196,31 @@ namespace Jly.Start
                 if (member.Name.IsNullOrWhiteSpace())
                 {
                     Log += $"\n姓名为空{JsonConvert.SerializeObject(member)}";
+                    DisableInfo.Add(member);
                     resut = true;
                 }
                 if (member.Phone.IsNullOrWhiteSpace())
                 {
                     Log += $"\n手机号为空：{JsonConvert.SerializeObject(member)}";
+                    DisableInfo.Add(member);
                     resut = true;
                 }
                 if (member.Gender.IsNullOrWhiteSpace())
                 {
                     Log += $"\n性别为空：{JsonConvert.SerializeObject(member)}";
+                    DisableInfo.Add(member);
                     resut = true;
+                }
+                if (!member.CTime.IsConverterDateTime())
+                {
+                    Log += $"\n加入时间格式错误：{JsonConvert.SerializeObject(member)}";
+                    DisableInfo.Add(member);
+                    return true;
                 }
                 if (!member.DeadlineTime.IsConverterDateTime())
                 {
                     Log += $"\n截止时间格式错误：{JsonConvert.SerializeObject(member)}";
+                    DisableInfo.Add(member);
                     resut = true;
                 }
             }

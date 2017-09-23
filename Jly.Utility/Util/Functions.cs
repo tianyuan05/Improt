@@ -43,7 +43,7 @@ namespace Jly.Utility.Util
             Microsoft.Win32.SaveFileDialog sfd = new Microsoft.Win32.SaveFileDialog()
             {
                 FileName = fileName,
-                Filter = "所有文件(*.*)|*.*|CSV文件(*.csv)|*.csv|文本文件|*.txt"
+                Filter = "所有文件(*.*)|*.*|CSV文件(*.csv)|*.csv|文本文件|*.txt|Excel文件|*.xlsx;xls"
             };
             if (sfd.ShowDialog() == true)
             {

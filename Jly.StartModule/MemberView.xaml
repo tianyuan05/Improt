@@ -126,9 +126,15 @@
                 <DockPanel>
                     <Grid DockPanel.Dock="Top">
                         <Label Content="异常日志" HorizontalAlignment="Left" VerticalContentAlignment="Center"/>
-                        <cc:TextButton Content="导出日志" 
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                            <cc:TextButton Content="导出错误日志"
+                                           Margin="10 0" 
+                                           Command="{Binding ExportCommand}"
+                                           Style="{StaticResource NormalTextButtonStyle}"/>
+                            <cc:TextButton Content="导出日志"
                                        Command="{Binding SaveLogCommand}"
                                        Style="{StaticResource NormalTextButtonStyle}" HorizontalAlignment="Right"/>
+                        </StackPanel>
                     </Grid>
                     <Grid>
                         <TextBox VerticalAlignment="Stretch" 

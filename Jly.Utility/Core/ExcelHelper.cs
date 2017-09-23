@@ -112,8 +112,6 @@ namespace Jly.Utility.Core
             List<CellDfn> columnDefinitons = new List<CellDfn>();
             PropertyInfo[] properties = dataType.GetProperties();
 
-            //TODO:可以加入表头
-
             foreach (PropertyInfo column in properties)
             {
                 columnDefinitons.Add(new CellDfn()
