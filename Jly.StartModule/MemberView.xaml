@@ -136,7 +136,7 @@
                                        Style="{StaticResource NormalTextButtonStyle}" HorizontalAlignment="Right"/>
                         </StackPanel>
                     </Grid>
-                    <Grid>
+                    <Grid Margin="10 0">
                         <TextBox VerticalAlignment="Stretch" 
                                  Text="{Binding Log,Mode=OneWay}"
                                  HorizontalAlignment="Stretch"

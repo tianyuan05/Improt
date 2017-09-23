@@ -18,9 +18,12 @@ using System.Windows;
 
 namespace Jly.MemberImprot
 {
+    /// <summary>
+    /// the view-model of login view 
+    /// </summary>
     public class LoginViewModel : BindableBase
     {
-        #region 字段
+        #region fields
 
         Setting setting;
 
@@ -34,22 +37,32 @@ namespace Jly.MemberImprot
 
         #endregion
 
-        #region 属性
+        #region property
 
         [Dependency]
         public IEventAggregator EventAggregator { get; set; }
 
+        /// <summary>
+        /// the list of account who been sigined in system
+        /// </summary>
         public IEnumerable<string> Users
         {
             get { return users; }
             set { SetProperty(ref users, value); }
         }
+
+        /// <summary>
+        /// the name of current login account
+        /// </summary>
         public string Account
         {
             get { return account; }
             set { SetProperty(ref account, value); }
         }
 
+        /// <summary>
+        /// the password of current login account
+        /// </summary>
         public SecureString Password
         {
             get { return password; }
@@ -57,6 +70,8 @@ namespace Jly.MemberImprot
         }
 
         #endregion
+
+        #region constructor
 
         public LoginViewModel()
         {
@@ -66,17 +81,27 @@ namespace Jly.MemberImprot
             ReadSetting();
         }
 
+        #endregion
 
         #region DelegateComamnd
 
+        /// <summary>
+        /// login command
+        /// </summary>
         public DelegateCommand LoginCommand { get; private set; }
 
+        /// <summary>
+        /// cancel login command
+        /// </summary>
         public DelegateCommand CancelCommand { get; private set; }
 
         #endregion
 
         #region private method
 
+        /// <summary>
+        /// get system setting info from local file
+        /// </summary>
         void ReadSetting()
         {
             setting = Setting.Load();
@@ -88,6 +113,9 @@ namespace Jly.MemberImprot
                 Account = setting.ManagerLastTime;
         }
 
+        /// <summary>
+        /// save system setting info to local file
+        /// </summary>
         void SaveSetting()
         {
             setting.ManagerLastTime = Account;
@@ -136,6 +164,9 @@ namespace Jly.MemberImprot
 
         }
 
+        /// <summary>
+        /// cancel sigin in
+        /// </summary>
         void OnCancel()
         {
             LoginView login = Application.Current.MainWindow as LoginView;
