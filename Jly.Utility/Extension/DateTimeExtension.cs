@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Jly.Utility.Extension
 {
-    public class DateTimeExtension
+    public static class DateTimeExtension
     {
 
     }

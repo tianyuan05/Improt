@@ -50,7 +50,19 @@ namespace Jly.Start
         {
             eventAggregator.GetEvent<OparkChangedEvent>().Subscribe(OnOparkChanged);
             QueryCommand = new DelegateCommand(OnQuery);
+            OnTest();
         }
+
+        #endregion
+
+        #region Test
+
+        void OnTest()
+        {
+            List<long> strs = new List<long> { 1, 2, 3, 4, 6, 5 };
+            Console.WriteLine(strs.Sort<long>().Join<long>("-"));
+        }
+
 
         #endregion
 
@@ -119,7 +131,7 @@ namespace Jly.Start
         /// <summary>
         /// 检测是否为空
         /// </summary>
-        /// <returns>true-null</returns>
+        /// <returns>false-null</returns>
         bool ConditionIsNull()
         {
             if (SearchKey.IsNullOrWhiteSpace())

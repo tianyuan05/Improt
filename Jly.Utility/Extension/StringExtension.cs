@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Jly.Utility.Extension
+namespace System
 {
     public static class StringExtension
     {
@@ -17,6 +17,7 @@ namespace Jly.Utility.Extension
         {
             return string.IsNullOrWhiteSpace(value);
         }
+
 
         public static bool IsNullOrEmpty(this string value)
         {

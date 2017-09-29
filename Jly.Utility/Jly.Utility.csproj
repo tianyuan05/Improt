@@ -85,6 +85,7 @@
     <Compile Include="Event\OparkChangedEvent.cs" />
     <Compile Include="Event\UserEvent.cs" />
     <Compile Include="Extension\DateTimeExtension.cs" />
+    <Compile Include="Extension\IEnumerableExtension.cs" />
     <Compile Include="Extension\StringExtension.cs" />
     <Compile Include="Http\LoginHttp.cs" />
     <Compile Include="Http\MemberHttp.cs" />

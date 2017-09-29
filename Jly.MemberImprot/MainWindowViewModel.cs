@@ -57,7 +57,8 @@ namespace Jly.MemberImprot
                 CurrentUser = user;
                 Session.Opark = CurrentUser.UserInfo.CurrentOpark;
                 Session.User = CurrentUser.UserInfo;
-                SelectOparkIndex = CurrentUser.UserInfo.Oparks.FindIndex(x => x.Id == CurrentUser.UserInfo.CurrentOpark.Id);
+                if (CurrentUser.UserInfo.Oparks.Count > 0)
+                    SelectOparkIndex = CurrentUser.UserInfo.Oparks.FindIndex(x => x.Id == CurrentUser.UserInfo.CurrentOpark.Id);
             }
         }
 

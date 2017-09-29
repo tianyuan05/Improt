@@ -13,6 +13,19 @@
         WindowState="Maximized"
         d:DataContext="{d:DesignInstance Type={x:Type local:MainWindowViewModel},IsDesignTimeCreatable=False}"
         prism:ViewModelLocator.AutoWireViewModel="True">
+    <Window.Resources>
+        <Style x:Key="MenuButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="White"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="Background" Value="Transparent"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Load">
             <ei:CallMethodAction TargetObject="{Binding}" MethodName="OnLoad"/>
@@ -41,17 +54,17 @@
                     </StackPanel>
                 </Border>
                 <StackPanel Margin="0 20" VerticalAlignment="Top">
-                    <Button Content="首页" Background="Transparent" Foreground="White"
+                    <Button Content="首页" Background="Transparent" Foreground="White" 
                             BorderThickness="1" BorderBrush="White" Click="Start_Click" Width="180" Height="27" HorizontalAlignment="Center"/>
                 </StackPanel>
                 <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center">
-                    <Button Content="会员列表" 
+                    <Button Content="会员列表"
                             Background="Transparent"
                             BorderBrush="White"
                             BorderThickness="1"
                             Foreground="White"
                             Click="Member_Click"
-                            Width="180" Height="27"/>
+                            Width="180" Height="27" Style="{StaticResource MenuButtonStyle}"/>
                 </StackPanel>
             </StackPanel>
             <GridSplitter BorderThickness="1" DockPanel.Dock="Left" BorderBrush="Gray"/>
